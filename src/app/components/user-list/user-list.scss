@@ -1,0 +1,152 @@
+.user-list-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.search-result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding: 20px 28px;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.08) 100%);
+  border-radius: 16px;
+  box-shadow: 
+    0 4px 20px rgba(102, 126, 234, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(102, 126, 234, 0.2);
+  backdrop-filter: blur(10px);
+
+  h2 {
+    margin: 0;
+    color: #667eea;
+    font-weight: 600;
+    font-size: 1.3rem;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+    }
+  }
+}
+
+.users-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 24px;
+  justify-items: center;
+  margin-bottom: 32px;
+}
+
+.user-card {
+  width: 100%;
+  max-width: 400px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 12px;
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  }
+  
+  &:active {
+    transform: translateY(-2px);
+  }
+}
+
+.search-result-card {
+  border: 2px solid #667eea;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+  box-shadow: 
+    0 8px 32px rgba(102, 126, 234, 0.15),
+    0 4px 16px rgba(118, 75, 162, 0.1);
+  transform: scale(1.02);
+  
+  &:hover {
+    transform: scale(1.04) translateY(-4px);
+    box-shadow: 
+      0 12px 40px rgba(102, 126, 234, 0.2),
+      0 8px 20px rgba(118, 75, 162, 0.15);
+  }
+}
+
+.user-avatar {
+  img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+}
+
+.user-email {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+mat-card-title {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+mat-card-subtitle {
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+mat-card-actions {
+  padding: 8px 16px 16px;
+  
+  button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .user-list-container {
+    padding: 16px;
+  }
+  
+  .users-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .user-card {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .users-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .user-card {
+    min-width: unset;
+  }
+}

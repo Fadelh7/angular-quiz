@@ -1,0 +1,201 @@
+.header-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  backdrop-filter: saturate(120%) blur(8px);
+  box-shadow: 
+    0 8px 32px rgba(102, 126, 234, 0.15),
+    0 4px 16px rgba(118, 75, 162, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.toolbar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.app-title {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  
+  &:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+    transition: all 0.3s ease;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.search-field {
+  width: 340px;
+  --bg: rgba(255, 255, 255, 0.12);
+  --border: rgba(255, 255, 255, 0.2);
+  --border-focus: rgba(255, 255, 255, 0.4);
+
+  ::ng-deep .mat-mdc-form-field {
+    .mat-mdc-text-field-wrapper {
+      background: linear-gradient(145deg, var(--bg), rgba(255, 255, 255, 0.08));
+      border-radius: 32px;
+      border: 1.5px solid var(--border);
+      box-shadow: 
+        inset 0 2px 4px rgba(0, 0, 0, 0.1),
+        0 4px 12px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      backdrop-filter: blur(10px);
+    }
+
+    .mdc-notched-outline__leading,
+    .mdc-notched-outline__notch,
+    .mdc-notched-outline__trailing {
+      border: none;
+    }
+
+    .mat-mdc-form-field-flex {
+      padding: 8px 16px 8px 20px;
+    }
+
+    .mat-mdc-form-field-label {
+      color: rgba(255, 255, 255, 0.8) !important;
+      font-weight: 500;
+    }
+
+    .mat-mdc-input-element {
+      color: #ffffff !important;
+      caret-color: #ffffff;
+      font-weight: 500;
+      
+      &::placeholder {
+        color: rgba(255, 255, 255, 0.65) !important;
+        font-weight: 400;
+      }
+      
+      &:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0 30px rgba(255, 255, 255, 0.12) inset !important;
+        -webkit-text-fill-color: #ffffff !important;
+      }
+    }
+
+    &.mdc-text-field--focused {
+      .mat-mdc-text-field-wrapper {
+        background: linear-gradient(145deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.12));
+        border-color: var(--border-focus);
+        box-shadow: 
+          inset 0 2px 4px rgba(0, 0, 0, 0.1),
+          0 8px 24px rgba(102, 126, 234, 0.2),
+          0 0 0 3px rgba(255, 255, 255, 0.1);
+        transform: translateY(-1px);
+      }
+      
+      .mat-mdc-form-field-label {
+        color: rgba(255, 255, 255, 0.95) !important;
+      }
+    }
+
+    &:hover:not(.mdc-text-field--focused) {
+      .mat-mdc-text-field-wrapper {
+        border-color: rgba(255, 255, 255, 0.3);
+        background: linear-gradient(145deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.1));
+        box-shadow: 
+          inset 0 2px 4px rgba(0, 0, 0, 0.1),
+          0 6px 16px rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+}
+
+.clear-search-btn {
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  mat-icon {
+    font-size: 18px;
+  }
+}
+
+.search-icon {
+  opacity: 0.9;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 20px;
+}
+
+.loading-bar {
+  position: absolute;
+  top: 64px;
+  left: 0;
+  right: 0;
+  z-index: 1001;
+  height: 4px;
+  
+  ::ng-deep .mat-mdc-progress-bar {
+    --mdc-linear-progress-active-indicator-color: rgba(255, 255, 255, 0.9);
+    --mdc-linear-progress-track-color: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+  }
+}
+
+// Additional override to ensure white text
+::ng-deep .mat-mdc-form-field input[type="number"] {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+// Override Material's default number input styling
+::ng-deep input[type="number"]::-webkit-outer-spin-button,
+::ng-deep input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+::ng-deep input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+@media (max-width: 768px) {
+  .toolbar-content {
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+  }
+  
+  .search-field {
+    width: 100%;
+    max-width: 360px;
+  }
+  
+  .loading-bar {
+    top: 100px;
+  }
+}

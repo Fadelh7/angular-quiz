@@ -1,0 +1,75 @@
+<div class="user-detail-container">
+  <div class="navigation-buttons">
+    <button mat-raised-button (click)="goBack()" class="back-button">
+      <mat-icon>arrow_back</mat-icon>
+      Back
+    </button>
+    <button mat-raised-button color="primary" (click)="goHome()" class="home-button">
+      <mat-icon>home</mat-icon>
+      Home
+    </button>
+  </div>
+
+  <mat-card *ngIf="user" class="user-detail-card">
+    <mat-card-header class="user-header">
+      <div mat-card-avatar class="user-avatar">
+        <img [src]="user.avatar" [alt]="user.first_name + ' ' + user.last_name">
+      </div>
+      <mat-card-title class="user-name">
+        {{user.first_name}} {{user.last_name}}
+      </mat-card-title>
+      <mat-card-subtitle class="user-id">
+        User ID: {{user.id}}
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content class="user-content">
+      <div class="user-info">
+        <div class="info-item">
+          <mat-icon class="info-icon">email</mat-icon>
+          <div class="info-details">
+            <span class="info-label">Email</span>
+            <span class="info-value">{{user.email}}</span>
+          </div>
+        </div>
+        
+        <div class="info-item">
+          <mat-icon class="info-icon">person</mat-icon>
+          <div class="info-details">
+            <span class="info-label">First Name</span>
+            <span class="info-value">{{user.first_name}}</span>
+          </div>
+        </div>
+        
+        <div class="info-item">
+          <mat-icon class="info-icon">person_outline</mat-icon>
+          <div class="info-details">
+            <span class="info-label">Last Name</span>
+            <span class="info-value">{{user.last_name}}</span>
+          </div>
+        </div>
+        
+        <div class="info-item">
+          <mat-icon class="info-icon">fingerprint</mat-icon>
+          <div class="info-details">
+            <span class="info-label">User ID</span>
+            <span class="info-value">{{user.id}}</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="user-avatar-large">
+        <img [src]="user.avatar" [alt]="user.first_name + ' ' + user.last_name">
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Loading state handled by interceptor -->
+  <div *ngIf="!user" class="loading-placeholder">
+    <mat-card class="placeholder-card">
+      <mat-card-content>
+        <p>Loading user details...</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
